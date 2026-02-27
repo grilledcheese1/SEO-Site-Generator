@@ -1,4 +1,3 @@
-﻿# McHazlett Law Firm (Next.js App Router)
 
 ## Local Development
 
