@@ -2,6 +2,7 @@
 
 import { getSiteContent } from "@/lib/content/read";
 import { toAbsoluteUrl } from "@/lib/seo/canonical";
+import type { IngestedPage } from "@/lib/validation/schemas";
 
 function isDenied(path: string, denyPatterns: string[]): boolean {
   return denyPatterns.some((pattern) => {
@@ -33,12 +34,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? site.baseUrl ?? "http://localhost:3000";
 
   return site.pages
-    .filter((page) => !isDenied(page.path, site.filters.denyPatterns))
-    .map((page) => ({
+    .filter((page: IngestedPage) => !isDenied(page.path, site.filters.denyPatterns))
+    .map((page: IngestedPage) => ({
       url: toAbsoluteUrl(baseUrl, page.canonical ?? page.path),
       lastModified: page.extractedAt || site.generatedAt,
       changeFrequency: inferChangeFrequency(page.kind),
       priority: inferPriority(page.kind),
     }));
 }
-

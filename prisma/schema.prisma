@@ -1,0 +1,50 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Tier {
+  FREE
+  STARTER
+  PRO
+}
+
+enum JobStatus {
+  PENDING
+  PROCESSING
+  COMPLETE
+  FAILED
+}
+
+model User {
+  id        String   @id @default(uuid())
+  email     String   @unique
+  tier      Tier     @default(FREE)
+  createdAt DateTime @default(now())
+  jobs      Job[]
+}
+
+model Job {
+  id           String    @id @default(uuid())
+  userId       String
+  user         User      @relation(fields: [userId], references: [id])
+  status       JobStatus @default(PENDING)
+  url          String
+  themeRequest String    @db.Text
+  downloadUrl  String?
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+}
+
+model CachedTemplate {
+  id         String   @id @default(uuid())
+  name       String
+  niche      String
+  html       String   @db.Text
+  previewUrl String?
+  createdAt  DateTime @default(now())
+}

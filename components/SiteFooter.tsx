@@ -1,6 +1,6 @@
 ﻿import Link from "next/link";
 
-import type { SiteNavItem } from "@/lib/content/types";
+import type { SiteNavItem } from "@/lib/validation/schemas";
 
 type SiteFooterProps = {
   siteName: string;

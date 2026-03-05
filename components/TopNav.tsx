@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useState } from "react";
 
-import type { SiteNavItem } from "@/lib/content/types";
+import type { SiteNavItem } from "@/lib/validation/schemas";
 
 type TopNavProps = {
   siteName: string;

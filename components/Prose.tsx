@@ -1,4 +1,4 @@
-﻿import type { PageContentBlocks } from "@/lib/content/types";
+﻿import type { PageContentBlocks } from "@/lib/validation/schemas";
 
 type ProseProps = {
   blocks: PageContentBlocks;

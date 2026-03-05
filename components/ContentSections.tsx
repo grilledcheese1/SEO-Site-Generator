@@ -1,4 +1,4 @@
-import type { SectionBlock } from "@/lib/content/types";
+import type { SectionBlock } from "@/lib/validation/schemas";
 
 type ContentSectionsProps = {
     sections: SectionBlock[];
@@ -216,8 +216,8 @@ function ListGroup({ blocks }: { blocks: SectionBlock[] }) {
                                 {block.items && block.items.length > 0 && (
                                     <span
                                         className={`shrink-0 rounded-full px-2 py-1 text-xs font-semibold ${isAlt
-                                                ? "bg-(--theme-accent)/10 text-(--theme-accent)"
-                                                : "bg-(--theme-brand)/10 text-(--theme-brand)"
+                                            ? "bg-(--theme-accent)/10 text-(--theme-accent)"
+                                            : "bg-(--theme-brand)/10 text-(--theme-brand)"
                                             }`}
                                     >
                                         {block.items.length} items

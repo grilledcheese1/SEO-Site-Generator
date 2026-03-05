@@ -2,8 +2,8 @@
 import path from "node:path";
 import { cache } from "react";
 
-import { siteContentSchema } from "@/lib/content/schema";
-import type { IngestedPage, SiteContent } from "@/lib/content/types";
+import { siteContentSchema } from "@/lib/validation/schemas";
+import type { IngestedPage, SiteContent } from "@/lib/validation/schemas";
 
 const SITE_CONTENT_PATH = path.join(process.cwd(), "content", "site.json");
 
